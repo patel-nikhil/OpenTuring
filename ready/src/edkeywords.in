@@ -6100,6 +6100,10 @@ static char	*stTuringPredefs[] =
      "cyan", "darkgray", "darkgrey",  "green", "grey", "purple", "red", 
      "white", "yellow",
      
+	 // Sort
+	 "Sort.sortchar", "Sort.sortint","Sort.sortreal", "Sort.sortstring",
+	 "Sort.stablesortchar", "Sort.stablesortint", "Sort.stablesortreal"
+
      // Str
      "Str.Center", "Str.Centre", "Str.CharArrayCopy", "Str.EndsWith", 
      "Str.Left", "Str.Lower", "Str.Lower", "Str.Pad", 

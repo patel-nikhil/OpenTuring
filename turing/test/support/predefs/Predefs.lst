@@ -1,5 +1,6 @@
 anyclass in "%oot/support/predefs/anyclass"
 
+"%oot/support/predefs/Sort.tu"
 "%oot/support/predefs/IntHashMap.tu"
 "%oot/support/predefs/GL.tu"
 

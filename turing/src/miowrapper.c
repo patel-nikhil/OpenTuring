@@ -17,14 +17,14 @@
 /* functions are procedures with an initial var parameter used to 	*/
 /* return the result of the function.					*/
 /************************************************************************/
-
+#include <stdio.h>
 /*******************/
 /* System includes */
 /*******************/
 #include <stdarg.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include <windows.h>
 /****************/
 /* Self include */
 /****************/
@@ -63,6 +63,7 @@
 #include "mioview.h"
 #include "miowindow.h"
 #include "miohashmap.h"
+#include "miosort.h"
 
 /**********/
 /* Macros */
@@ -1910,6 +1911,79 @@ void MIO_glgraph_drawtriangle (OOTaddr *sp)
 }
 
 /************************************************************************/
+/* Sort module							*/
+/************************************************************************/
+void MIO_sort_sortint(OOTaddr *sp)
+{
+	OOTint *arr;
+	OOTint sz;	
+	MyExecutorScan(sp, "AI", &arr, &sz);	
+	MIOSort_sortint(arr, sz);
+}
+
+void MIO_sort_sortreal(OOTaddr *sp)
+{
+	OOTreal *arr;
+	OOTint sz;
+	MyExecutorScan(sp, "AI", &arr, &sz);
+
+	MIOSort_sortreal(arr, sz);
+}
+
+void MIO_sort_sortstring(OOTaddr *sp)
+{
+	//*sp = "hi"
+	//*(*sp+1) = "i"
+	//*(sp+2) = 3
+
+	char **arr;
+	OOTint sz;
+	//MyExecutorScan(sp, "AI", &arr, &sz);		
+
+	arr = (char**) sp;
+	
+	sz = (OOTint) *sp + 2;	
+
+	/*char s = 'g';
+	char a[2] = { s, '\0' };
+	char b[] = { *(*sp+1), '\0' }; //Prints out letter of string
+	//OutputDebugString(*(sp + 5));
+	char buffer[5];
+	sprintf(buffer, "%lu", *(sp+2)); //SIZE INT
+	OutputDebugString(*(sp)+STRLEN);	//WORKING (PRINTS SECOND ELEMENT)
+	OutputDebugString(buffer);
+
+	char ***array = &arr;
+	**array = (char *)*sp;
+	sp += ADDR_SIZE * 2;
+	
+	long *pint = &sz;
+	*pint = *((long *)sp);
+	sp += INT_SIZE;*/
+
+
+	//MIOSort_sortstring(arr, sz);
+}
+
+void MIO_sort_stablesortint(OOTaddr *sp)
+{
+	OOTint *arr;
+	OOTint sz;
+	MyExecutorScan(sp, "AI", &arr, &sz);
+
+	MIOSort_stablesortint(arr, sz);
+}
+
+void MIO_sort_stablesortreal(OOTaddr *sp)
+{
+	OOTreal *arr;
+	OOTint sz;
+	MyExecutorScan(sp, "AI", &arr, &sz);
+
+	MIOSort_stablesortreal(arr, sz);
+}
+
+/************************************************************************/
 /* Sprite module							*/
 /************************************************************************/
 void MIO_sprite_new (OOTaddr *sp)
@@ -2760,7 +2834,7 @@ static void	MyExecutorScan (OOTaddr *sp, const char *param, ...)
 {
    const char *pf = param;
 
-   va_list curr_arg;
+   va_list curr_arg; //char*
 
    va_start(curr_arg, param);
 

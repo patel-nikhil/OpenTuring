@@ -265,6 +265,12 @@ extern void MIO_glgraph_drawline();
 extern void MIO_glgraph_drawfilltriangle();
 extern void MIO_glgraph_drawtriangle();
 
+extern void MIO_sort_sortint();
+extern void MIO_sort_sortreal();
+extern void MIO_sort_sortstring();
+extern void MIO_sort_stablesortint();
+extern void MIO_sort_stablesortreal();
+
 extern void MIO_sys_exec();
 extern void MIO_sys_exit();
 extern void MIO_sys_getcomputername();
@@ -571,6 +577,12 @@ struct LookupEntry externLookupTable[] = {
     { "rgb_getcolour",		MIO_rgb_getcolour },
     { "rgb_maxcolour",		MIO_rgb_maxcolour },
     { "rgb_setcolour",		MIO_rgb_setcolour },
+
+	{ "sort_sortint",		MIO_sort_sortint },
+	{ "sort_sortreal",		MIO_sort_sortreal },
+	{ "sort_sortstring",	MIO_sort_sortstring },
+	{ "sort_stablesortint",	MIO_sort_stablesortint },
+	{ "sort_stablesortreal",MIO_sort_stablesortreal },
 
     { "sprite_animate",		MIO_sprite_animate },
     { "sprite_changepic",	MIO_sprite_changepic },
