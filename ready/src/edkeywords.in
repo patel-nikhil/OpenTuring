@@ -6101,8 +6101,10 @@ static char	*stTuringPredefs[] =
      "white", "yellow",
      
 	 // Sort
-	 "Sort.sortchar", "Sort.sortint","Sort.sortreal", "Sort.sortstring",
-	 "Sort.stablesortchar", "Sort.stablesortint", "Sort.stablesortreal"
+	 "Sort.csort", "Sort.isort","Sort.rsort", "Sort.ssort",
+
+	 //StableSort
+	 "StableSort.csort", "StableSort.isort", "StableSort.rsort"
 
      // Str
      "Str.Center", "Str.Centre", "Str.CharArrayCopy", "Str.EndsWith", 
