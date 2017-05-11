@@ -31,7 +31,7 @@ extern void sortreal(double a[], int n) {
 
 /* Sorts real values */
 extern void sortstring(char *a[], int n) {
-	//if (!a) return;
+	if (!a) return;
 	quicksortstring(a, n);
 }
 
@@ -109,7 +109,7 @@ void quicksortreal(double a[], int n) {
 /* Quicksort string values */
 void quicksortstring(char *a[], int n) {
 	shufflestring(a, n);
-	/*partitionsortstring(a, 0, n - 1, 0);*/
+	partitionsortstring(a, 0, n - 1, 0);
 }
 
 
@@ -120,7 +120,6 @@ void partitionsortint(int a[], int lo, int hi) {
 		insertionsortint(a, lo, hi);
 		return;
 	}
-
 	int pValue = a[lo];
 	int pivot = lo;
 
@@ -193,38 +192,42 @@ void partitionsortreal(double a[], int lo, int hi) {
 }
 
 void partitionsortstring(char *a[], int lo, int hi, int pos) {
-	if (lo >= hi) return;
-	//return;
-	int pValue = (pos < (signed)strlen(a[lo]) ? a[lo][pos] : -1);
-	int pivot = lo;
+	if (lo >= hi) return;		
+
+	int pValue = (pos < (signed)strlen(*a + lo*MAX_STRLEN) ? (int)(*(*a+lo*MAX_STRLEN+pos)) : -1);
+	int pivot = lo;	
 
 	int index = lo + 1;						/*Start scan on element at index 1*/
 	int end = hi;
-	
+
 	while (index <= end) {
 
-		int current = (pos < (signed)strlen(a[index]) ? a[index][pos] : -1);
-
-		if (current < pValue) {				/*Put the smaller element in front of the pivot element*/
-			char *temp = a[pivot];
-			a[pivot] = a[index];
-			a[index] = temp;
+		int current = (pos < (signed)strlen(*a + index*MAX_STRLEN) ? *((*a + index*MAX_STRLEN)+pos) : -1);		
+	
+		if (current < pValue) {				/*Put the smaller element in front of the pivot element*/					
+			char *temp = calloc(MAX_STRLEN, sizeof(char));
+			strcpy(temp, *a + pivot*MAX_STRLEN);
+			strcpy(*a + pivot * MAX_STRLEN, *a + index * MAX_STRLEN);
+			strcpy(*a + index * MAX_STRLEN, temp);
+			free(temp);
 			index++;						/*Increment index to check next element*/
 			pivot++;						/*Keep start as the index for the pivot element*/
 		}
-		else if (current > pValue) {		/*Put the bigger element at the end of the list*/
-			char *temp = a[index];
-			a[index] = a[end];
-			a[end] = temp;
+		else if (current > pValue) {		/*Put the bigger element at the end of the list*/						
+			char *temp = calloc(MAX_STRLEN, sizeof(char));
+			strcpy(temp, *a + index * MAX_STRLEN);
+			strcpy(*a + index * MAX_STRLEN, *a + end * MAX_STRLEN);
+			strcpy(*a + end * MAX_STRLEN, temp);
+			free(temp);
 			end--;							/*Set upper bound to the next highest index*/
 		}
 		else {
 			index++;
 		}
 	}
-	//partitionsortstring(a, lo, pivot - 1, pos);
-	//if (pValue >= 0) partitionsortstring(a, pivot, end, pos + 1);
-	//partitionsortstring(a, end + 1, hi, pos);
+	partitionsortstring(a, lo, pivot - 1, pos);
+	if (pValue >= 0) partitionsortstring(a, pivot, end, pos + 1);
+	partitionsortstring(a, end + 1, hi, pos);
 }
 
 
@@ -296,11 +299,14 @@ void shufflereal(double a[], int n) {
 
 /* Modern Fisher-Yates shuffle */
 void shufflestring(char **a, int n) {
-	srand((unsigned)time(NULL));
-	for (int i = n - 1; i > 0; i--) {
-		int j = rand() % (i + 1);		
-		char *temp = *(a+i*MAX_STRLEN);
-		*(a + i*MAX_STRLEN) = *(a+j*MAX_STRLEN);
-		*(a+j*MAX_STRLEN) = temp;
+	srand((unsigned)time(NULL));	
+	for (int i = n - 1; i > 0; i--) {		
+		int j = rand() % (i + 1);				
+		
+		char *temp = calloc(MAX_STRLEN, sizeof(char));
+		strcpy(temp, *a + i*MAX_STRLEN);
+		strcpy(*a + i*MAX_STRLEN, *a + j*MAX_STRLEN);
+		strcpy(*a + j*MAX_STRLEN, temp);
+		free(temp);		
 	}
 }

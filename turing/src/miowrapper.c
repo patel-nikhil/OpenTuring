@@ -1936,13 +1936,30 @@ void MIO_sort_sortstring(OOTaddr *sp)
 	//*(*sp+1) = "i"
 	//*(sp+2) = 3
 
-	char **arr;
+	OOTstring *arr;
 	OOTint sz;
 	//MyExecutorScan(sp, "AI", &arr, &sz);		
-
-	arr = (char**) sp;
 	
-	sz = (OOTint) *sp + 2;	
+	sz = (OOTint)(*(sp + 2));
+
+	OOTaddr *arg_arrayp;
+	arg_arrayp = (OOTaddr*)&arr;
+	*arg_arrayp = (OOTaddr)sp;	
+	
+
+	/*char buffer[5];
+	sprintf(buffer, "%lu", sz);
+	OutputDebugString(buffer);*/
+
+
+	/*char a[2] = { 's', '\0' };
+	char b[2] = { 's', '\0' };
+	char **word;
+	(*word)[0] = a;
+	(*word)[1] = b;*/
+
+	//strcpy(*sp, a);
+	//OutputDebugString(*sp);
 
 	/*char s = 'g';
 	char a[2] = { s, '\0' };
@@ -1962,7 +1979,10 @@ void MIO_sort_sortstring(OOTaddr *sp)
 	sp += INT_SIZE;*/
 
 
-	//MIOSort_sortstring(arr, sz);
+	MIOSort_sortstring(arr, sz);
+
+	//RESULT_OOT_ADDR(sp, word);
+
 }
 
 void MIO_sort_stablesortint(OOTaddr *sp)
