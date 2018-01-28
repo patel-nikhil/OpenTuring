@@ -5881,10 +5881,11 @@ static char	*stTuringPredefs[] =
 
 	 // GL
 
-	 "GL.NewWin","GL,CloseWin","GL.Cls","GL.Update","GL.SetLight",
+	 "GL.NewWin","GL,CloseWin","GL.Cls","GL.Status","GL.Update","GL.SetLight",
 	 "GL.PushMatrix","GL.PopMatrix","GL.ClearMatrix",
 	 "GL.Scale","GL.Translate","GL.Rotate",
 	 "GL.DrawLine","GL.DrawFillTriangle","GL.DrawTriangle",
+	 "GL.MouseWhere", "GL.ButtonWait",
 
      // IniFile
      "IniFile.Open", "IniFile.GetString", "IniFile.GetStringDefault", 

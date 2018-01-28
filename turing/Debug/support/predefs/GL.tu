@@ -8,6 +8,9 @@ module pervasive GL
 
     external "glgraph_cls" proc Cls ()
     external "glgraph_update" proc Update ()
+    external "glgraph_status" fcn Status () : boolean
+    external "glgraph_mousewhere" proc MouseWhere (var x, y : int)
+    external "glgraph_buttonwait" fcn ButtonWait (var x, y, btn : int) : boolean
     
     % 1 is enabled 0 is disabled. Disabled by default
     external "glgraph_setlight" proc SetLight (enabled : int)

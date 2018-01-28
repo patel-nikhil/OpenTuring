@@ -1817,6 +1817,11 @@ void MIO_glgraph_closewin (OOTaddr *sp)
     MIOGLGraph_CloseWin();
 }
 
+void MIO_glgraph_status(OOTaddr *sp)
+{
+	RESULT_OOT_BOOL(sp, MIOGLGraph_Status());
+}
+
 void MIO_glgraph_update (OOTaddr *sp)
 {
     MIOGLGraph_Update();
@@ -1908,6 +1913,24 @@ void MIO_glgraph_drawtriangle (OOTaddr *sp)
     MyExecutorScan (sp, "888888888III", &x1,&y1,&z1,&x2,&y2,&z2,&x3,&y3,&z3,&r,&g,&b);
 
     MIOGLGraph_Triangle (x1, y1, z1,x2, y2, z2,x3, y3, z3,r,g,b);
+}
+
+void MIO_glgraph_mousewhere(OOTaddr *sp)
+{
+	OOTint *x, *y;
+
+	MyExecutorScan(sp, "RR", &x, &y);
+
+	MIOGLGraph_MouseWhere(x, y);
+}
+
+void MIO_glgraph_buttonwait(OOTaddr *sp)
+{
+	OOTint *x, *y, *btn;
+
+	MyExecutorScan(sp, "RRR", &x, &y, &btn);
+
+	RESULT_OOT_BOOL(sp, MIOGLGraph_ButtonWait(x, y, btn));
 }
 
 /************************************************************************/

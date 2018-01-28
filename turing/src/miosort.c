@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>
+
 /* Sorts */
 extern void MIOSort_sortint(int a[], int n) {	
 	sortint(a, n);

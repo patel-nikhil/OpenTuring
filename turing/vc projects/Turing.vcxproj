@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{30051F8A-5954-477A-9491-B5F13D25BA11}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -141,7 +141,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>..\src\SDL-1.2.14\lib;%(AdditionalLibraryDirectories);"C:\Program Files (x86)\Microsoft Visual Studio\Shared\14.0\VC\lib";$(WindowsSDK_LibraryPath_x86);$(UniversalCRT_LibraryPath_x86);</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\src\SDL-1.2.14\lib;%(AdditionalLibraryDirectories);"C:\Program Files (x86)\Microsoft Visual Studio\Shared\14.0\VC\lib";$(WindowsSDK_LibraryPath_x86);$(UniversalCRT_LibraryPath_x86);C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\lib\onecore\x86;</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>

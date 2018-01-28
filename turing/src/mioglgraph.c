@@ -4,7 +4,8 @@
 #include <windows.h>		// Header File For Windows
 #include <gl\gl.h>			// Header File For The OpenGL32 Library
 #include <gl\glu.h>			// Header File For The GLu32 Library
-
+#include "stdio.h"
+//#include "mio.c"
 
 /****************/
 /* Self include */
@@ -31,6 +32,8 @@
 /**********/
 
 #define CAP8(x) ((GLubyte)(((x) < 255 && (x) >= 0) ? (x) : 255))
+#define GET_X_LPARAM(lp)                        ((int)(short)LOWORD(lp))
+#define GET_Y_LPARAM(lp)                        ((int)(short)HIWORD(lp))
 
 /*************/
 /* Constants */
@@ -68,6 +71,13 @@ HINSTANCE	hInstance;		// Holds The Instance Of The Application
 /********************/
 /* Static variables */
 /********************/
+
+static struct WM_MOUSE {
+	int X;
+	int Y;
+	short buttonmask;
+	BOOL pressed;
+} Cursor;
 
 /******************************/
 /* Static callback procedures */
@@ -109,6 +119,8 @@ LRESULT	CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);	// Declaration For WndProc
 /***********************/
 /* External procedures */
 /***********************/
+extern void	Language_Execute_EventQueueInsert(int pmStream,
+	struct EventDescriptor *pmEvent);
 
 extern void	MIOGLGraph_InitRun () {
 	stGLWinOpen = FALSE;
@@ -261,7 +273,10 @@ extern BOOL	MIOGLGraph_NewWin (OOTint width,OOTint height)
 			MessageBox(NULL,"Can't Activate The GL Rendering Context.","ERROR",MB_OK|MB_ICONEXCLAMATION);
 			return FALSE;								// Return FALSE
 		}
-
+		Cursor.X = 0;
+		Cursor.Y = 0;
+		Cursor.buttonmask = 0;
+		Cursor.pressed = FALSE;
 		ShowWindow(hWnd,SW_SHOW);						// Show The Window
 		SetForegroundWindow(hWnd);						// Slightly Higher Priority
 		SetFocus(hWnd);									// Sets Keyboard Focus To The Window
@@ -280,16 +295,54 @@ LRESULT CALLBACK WndProc(	HWND	hWnd,			// Handle For This Window
 							WPARAM	wParam,			// Additional Message Information
 							LPARAM	lParam)			// Additional Message Information
 {
-	if (uMsg == WM_CLOSE)									// Check For Windows Messages
-	{
-			//PostQuitMessage(0);						// Send A Quit Message
-			MIOGLGraph_CloseWin();
-			stGLWinClosed = TRUE;
-			return 0;								// Jump Back
+	switch (uMsg) {
+	case (WM_LBUTTONDOWN): // | WM_LBUTTONUP | WM_RBUTTONUP):
+		Cursor.X = GET_X_LPARAM(lParam);
+		Cursor.Y = GET_Y_LPARAM(lParam);
+		Cursor.buttonmask = wParam;
+		Cursor.pressed = TRUE;
+		return 0;
+	case WM_MOUSEMOVE:
+		Cursor.X = GET_X_LPARAM(lParam);
+		Cursor.Y = GET_Y_LPARAM(lParam);		
+		return 0;
+	case WM_CLOSE:
+		MIOGLGraph_CloseWin();
+		stGLWinClosed = TRUE;
+		return 0;
 	}
-
 	// Pass All Unhandled Messages To DefWindowProc
 	return DefWindowProc(hWnd,uMsg,wParam,lParam);
+}
+
+extern void MIOGLGraph_MouseWhere(OOTint *pmX, OOTint *pmY)
+{
+	*pmX = Cursor.X;
+	*pmY = Cursor.Y;
+	/*char buffer[256];
+	snprintf(buffer, sizeof(buffer), "%s%d%s%d", "X: ", xPos, " Y: ", yPos);
+	MIOFILE	pmMIOFILE;
+	memset(&pmMIOFILE, 0, sizeof(MIOFILE));
+	pmMIOFILE.windowType = 77;
+	pmMIOFILE.windowPtr = (void *)MIO_selectedRunWindow;*/
+	/*MIOWin_OutputText(MIO_selectedRunWindow, buffer);*/
+}
+
+extern BOOL MIOGLGraph_ButtonWait(OOTint *pmX, OOTint *pmY, OOTint *btn)
+{
+	*pmX = Cursor.X;
+	*pmY = Cursor.Y;
+	*btn = Cursor.buttonmask;
+	if (Cursor.pressed == TRUE) {
+		Cursor.pressed = FALSE;
+		return TRUE;
+	}
+	return Cursor.pressed;
+}
+
+extern BOOL MIOGLGraph_Status()
+{
+	return !stGLWinClosed;
 }
 
 extern void	MIOGLGraph_Update ()

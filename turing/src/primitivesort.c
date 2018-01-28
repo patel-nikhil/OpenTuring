@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <windows.h>
+
 #define MAX_STRLEN 256
 
 /**		Integer valued array sorting methods	**/
