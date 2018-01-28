@@ -2,12 +2,23 @@ unit
 module pervasive GL
     export all
 
+    const LBUTTON : int := 1
+    const RBUTTON : int := 2
+    const SHIFT : int := 4
+    const CTRL : int := 8
+    const MBUTTON : int := 16
+    const XBUTTON1 : int := 32
+    const XBUTTON2 : int := 64      
+    
     external "glgraph_newwin" fcn NewWin (width, height : int) : boolean
     external "glgraph_closewin" proc CloseWin ()
     %external "glgraph_copytowin" proc Blit (x,y : int)
 
     external "glgraph_cls" proc Cls ()
     external "glgraph_update" proc Update ()
+    external "glgraph_status" fcn Status () : boolean
+    external "glgraph_mousewhere" proc MouseWhere (var x, y : int)
+    external "glgraph_buttonwait" fcn ButtonWait (var x, y, btn : int) : boolean
     
     % 1 is enabled 0 is disabled. Disabled by default
     external "glgraph_setlight" proc SetLight (enabled : int)

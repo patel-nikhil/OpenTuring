@@ -37,6 +37,7 @@ extern void	MIOGLGraph_CopyToWin (OOTint x,OOTint y);
 extern void	MIOGLGraph_InitRun ();
 extern BOOL	MIOGLGraph_NewWin (OOTint width,OOTint height);
 extern void	MIOGLGraph_CloseWin ();
+extern BOOL MIOGLGraph_Status();
 extern void	MIOGLGraph_Update ();
 extern void	MIOGLGraph_Cls ();
 
@@ -66,5 +67,7 @@ extern void	MIOGLGraph_Triangle (
 								OOTreal x3,OOTreal y3,OOTreal z3,
 								OOTint r, OOTint g, OOTint b);
 
+extern void MIOGLGraph_MouseWhere(OOTint *pmX, OOTint *pmY);
+extern BOOL MIOGLGraph_ButtonWait(OOTint *pmX, OOTint *pmY, OOTint *btn);
 
 #endif // #ifndef _MIOGLGRAPH_H_

@@ -1,11 +1,11 @@
 #Open Turing 1.0
 ####Download: https://github.com/downloads/Open-Turing-Project/OpenTuring/package.zip
-#####Current lead maintainer: Tristan Hume
 
 
 
 Open Turing is an open-source implementation of Turing for Windows.
-I (Tristan Hume) acquired the source code from Tom West, the last maintainer of the project.
+Tristan Hume acquired the source code from Tom West, previous maintainer of the project. This is a fork from Tristan Hume's repository, my attempt to expand and possibly revive the OpenTuring project.
+
 This version is backwards-compatible with normal turing.
 
 As well as being open-source it is also faster and has more features.
@@ -69,7 +69,6 @@ To get a fully working release with your changes you must compile both of these.
 	6. Put the file in the support/predefs folder and put the file name in support/predefs/predefs.lst
 * The main projects you should care about are Editor, MIO, Executor, Compiler and Coder.
 * The VS project builds to /turing/test
-* I (Tristan) figured all this out with almost no instruction. So you should be OK.
 
 ###How to Submit Contributions:
 1. Get github! (Seriously, it's awesome.)

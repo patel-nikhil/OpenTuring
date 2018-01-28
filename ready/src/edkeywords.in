@@ -5881,10 +5881,13 @@ static char	*stTuringPredefs[] =
 
 	 // GL
 
-	 "GL.NewWin","GL,CloseWin","GL.Cls","GL.Update","GL.SetLight",
+	 "GL.NewWin","GL,CloseWin","GL.Cls","GL.Status","GL.Update","GL.SetLight",
 	 "GL.PushMatrix","GL.PopMatrix","GL.ClearMatrix",
 	 "GL.Scale","GL.Translate","GL.Rotate",
 	 "GL.DrawLine","GL.DrawFillTriangle","GL.DrawTriangle",
+	 "GL.MouseWhere","GL.ButtonWait", "GL.LBUTTON", "GL.RBUTTON",
+	 "GL.MBUTTON","GL.XBUTTON1","GL.XBUTTON2","GL.SHIFT",
+	 "GL.CTRL"
 
      // IniFile
      "IniFile.Open", "IniFile.GetString", "IniFile.GetStringDefault", 
@@ -6100,6 +6103,12 @@ static char	*stTuringPredefs[] =
      "cyan", "darkgray", "darkgrey",  "green", "grey", "purple", "red", 
      "white", "yellow",
      
+	 // Sort
+	 "Sort.csort", "Sort.isort","Sort.rsort", "Sort.ssort",
+
+	 //StableSort
+	 "StableSort.csort", "StableSort.isort", "StableSort.rsort"
+
      // Str
      "Str.Center", "Str.Centre", "Str.CharArrayCopy", "Str.EndsWith", 
      "Str.Left", "Str.Lower", "Str.Lower", "Str.Pad", 

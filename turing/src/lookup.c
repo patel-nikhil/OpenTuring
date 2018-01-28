@@ -248,6 +248,8 @@ extern void MIO_music_preload();
 //extern void MIO_glgraph_freecontext();
 //extern void MIO_glgraph_copytowin();
 
+extern void MIO_glgraph_status();
+
 extern void MIO_glgraph_newwin();
 extern void MIO_glgraph_closewin();
 extern void MIO_glgraph_cls();
@@ -264,6 +266,14 @@ extern void MIO_glgraph_scale();
 extern void MIO_glgraph_drawline();
 extern void MIO_glgraph_drawfilltriangle();
 extern void MIO_glgraph_drawtriangle();
+extern void MIO_glgraph_buttonwait();
+extern void MIO_glgraph_mousewhere();
+
+extern void MIO_sort_sortint();
+extern void MIO_sort_sortreal();
+extern void MIO_sort_sortstring();
+extern void MIO_sort_stablesortint();
+extern void MIO_sort_stablesortreal();
 
 extern void MIO_sys_exec();
 extern void MIO_sys_exit();
@@ -433,6 +443,7 @@ struct LookupEntry externLookupTable[] = {
     { "font_startsize",		MIO_font_startsize },
     { "font_width",		MIO_font_width },
 
+	{ "glgraph_buttonwait",	MIO_glgraph_buttonwait },
 	{ "glgraph_clearmatrix", MIO_glgraph_clearmatrix },
 	{ "glgraph_closewin",	MIO_glgraph_closewin },
 	{ "glgraph_cls",	MIO_glgraph_cls },
@@ -441,6 +452,7 @@ struct LookupEntry externLookupTable[] = {
 	{ "glgraph_drawline",	MIO_glgraph_drawline },
 	{ "glgraph_drawtriangle",	MIO_glgraph_drawtriangle },
 //	{ "glgraph_freecontext",	MIO_glgraph_freecontext },
+	{ "glgraph_mousewhere",	MIO_glgraph_mousewhere},	
 //	{ "glgraph_newcontext",	MIO_glgraph_newcontext },
 	{ "glgraph_newwin",	MIO_glgraph_newwin },
 	{ "glgraph_popmatrix", MIO_glgraph_popmatrix },
@@ -448,6 +460,7 @@ struct LookupEntry externLookupTable[] = {
 	{ "glgraph_rotate", MIO_glgraph_rotate },
 	{ "glgraph_scale", MIO_glgraph_scale },
 	{ "glgraph_setlight", MIO_glgraph_setlight },
+	{ "glgraph_status", MIO_glgraph_status },
 	{ "glgraph_translate", MIO_glgraph_translate },
 	{ "glgraph_update",	MIO_glgraph_update },
 
@@ -571,6 +584,12 @@ struct LookupEntry externLookupTable[] = {
     { "rgb_getcolour",		MIO_rgb_getcolour },
     { "rgb_maxcolour",		MIO_rgb_maxcolour },
     { "rgb_setcolour",		MIO_rgb_setcolour },
+
+	{ "sort_sortint",		MIO_sort_sortint },
+	{ "sort_sortreal",		MIO_sort_sortreal },
+	{ "sort_sortstring",	MIO_sort_sortstring },
+	{ "sort_stablesortint",	MIO_sort_stablesortint },
+	{ "sort_stablesortreal",MIO_sort_stablesortreal },
 
     { "sprite_animate",		MIO_sprite_animate },
     { "sprite_changepic",	MIO_sprite_changepic },

@@ -182,6 +182,12 @@
     <ClCompile Include="..\src\mioglgraph.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\miosort.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\primitivesort.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\mioerrmsg.in">
@@ -412,6 +418,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\mioglgraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\miosort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\primitivesort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
