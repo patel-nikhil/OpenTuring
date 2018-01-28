@@ -1819,6 +1819,7 @@ void MIO_glgraph_closewin (OOTaddr *sp)
 
 void MIO_glgraph_status(OOTaddr *sp)
 {
+	MyExecutorScan(sp, "r");
 	RESULT_OOT_BOOL(sp, MIOGLGraph_Status());
 }
 
@@ -1928,7 +1929,7 @@ void MIO_glgraph_buttonwait(OOTaddr *sp)
 {
 	OOTint *x, *y, *btn;
 
-	MyExecutorScan(sp, "RRR", &x, &y, &btn);
+	MyExecutorScan(sp, "rRRR", &x, &y, &btn);
 
 	RESULT_OOT_BOOL(sp, MIOGLGraph_ButtonWait(x, y, btn));
 }
