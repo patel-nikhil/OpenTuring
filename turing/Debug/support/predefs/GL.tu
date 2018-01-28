@@ -2,6 +2,14 @@ unit
 module pervasive GL
     export all
 
+    const LBUTTON : int := 1
+    const RBUTTON : int := 2
+    const SHIFT : int := 4
+    const CTRL : int := 8
+    const MBUTTON : int := 16
+    const XBUTTON1 : int := 32
+    const XBUTTON2 : int := 64      
+    
     external "glgraph_newwin" fcn NewWin (width, height : int) : boolean
     external "glgraph_closewin" proc CloseWin ()
     %external "glgraph_copytowin" proc Blit (x,y : int)
