@@ -167,7 +167,9 @@ extern void MIO_gui_responsedlg_input();
 extern void MIO_hashmap_new ();
 extern void MIO_hashmap_free ();
 extern void MIO_hashmap_put ();
+extern void MIO_hashmap_putreal();
 extern void MIO_hashmap_get ();
+extern void MIO_hashmap_getreal();
 extern void MIO_hashmap_remove ();
 
 extern void MIO_input_keydown ();
@@ -477,8 +479,10 @@ struct LookupEntry externLookupTable[] = {
 
 	{ "hashmap_free", MIO_hashmap_free },
 	{ "hashmap_get", MIO_hashmap_get },
+	{ "hashmap_getreal", MIO_hashmap_getreal },
 	{ "hashmap_new", MIO_hashmap_new },
 	{ "hashmap_put", MIO_hashmap_put },
+	{ "hashmap_putreal", MIO_hashmap_putreal },
 	{ "hashmap_remove", MIO_hashmap_remove },
 
     { "input_getch",		Language_Execute_Graphics_Getch },
