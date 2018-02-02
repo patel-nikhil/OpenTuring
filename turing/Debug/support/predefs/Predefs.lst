@@ -3,7 +3,7 @@ anyclass in "%oot/support/predefs/anyclass"
 "%oot/support/predefs/Sort.tu"
 "%oot/support/predefs/StableSort.tu"
 "%oot/support/predefs/IntHashMap.tu"
-"%oot/support/predefs/StrHashMap.tu"
+"%oot/support/predefs/RealHashMap.tu"
 "%oot/support/predefs/GL.tu"
 
 "%oot/support/predefs/Concurrency.tu"
