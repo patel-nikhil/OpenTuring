@@ -29,7 +29,7 @@
 #ifdef _INC_WINDOWS
 xxx
 #endif
-#include <stdio.h>
+
 /**********/
 /* Macros */
 /**********/

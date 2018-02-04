@@ -5916,6 +5916,9 @@ static char	*stTuringPredefs[] =
 	 "RealHashMap.New","RealHashMap.Free",
 	 "RealHashMap.Put","RealHashMap.Get","RealHashMap.Remove",
 
+	 "StrHashMap.New","StrHashMap.Free",
+	 "StrHashMap.Put","StrHashMap.Get","StrHashMap.Remove",
+
      // Joystick
      "Joystick.GetInfo",
      "joystick1", "joystick2", "joyMax", "joyMin",
