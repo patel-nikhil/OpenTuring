@@ -29,7 +29,7 @@
 #ifdef _INC_WINDOWS
 xxx
 #endif
-
+#include <stdio.h>
 /**********/
 /* Macros */
 /**********/
@@ -133,6 +133,19 @@ extern void	MIOHashmap_PutReal(OOTint pmMapID, OOTstring key, OOTreal value)
 	hashmapSet(myMap, putval, key);
 }
 
+extern void	MIOHashmap_PutString(OOTint pmMapID, OOTstring key, OOTstring value)
+{
+	hashmap *myMap;
+	OOTstring *putval;
+
+	putval = (OOTstring*)malloc(sizeof(OOTstring));
+	putval = &value;
+
+	myMap = (hashmap *)MIO_IDGet(pmMapID, HASHMAP_ID);
+
+	hashmapSet(myMap, *putval, key);
+}
+
 extern OOTint	MIOHashmap_Get (OOTint pmMapID, OOTstring key, OOTint *result)
 {
 	hashmap *myMap = (hashmap*)MIO_IDGet (pmMapID, HASHMAP_ID);
@@ -165,9 +178,25 @@ extern OOTint	MIOHashmap_GetReal(OOTint pmMapID, OOTstring key, OOTreal *result)
 		*result = *retrieved;
 		return 1;
 	}
-
-
 }
+
+extern OOTint	MIOHashmap_GetString(OOTint pmMapID, OOTstring key, char **result)
+{
+	hashmap *myMap = (hashmap*)MIO_IDGet(pmMapID, HASHMAP_ID);
+
+	char **retrieved;
+	retrieved = hashmapGet(myMap, key);
+	
+	if (retrieved == NULL) {
+		result = 0;
+		return 0; // 0 if not found
+	}
+	else {		
+		*result = (char*)retrieved;		
+		return 1;
+	}
+}
+
 extern void	MIOHashmap_Remove (OOTint pmMapID, OOTstring key)
 {
 	hashmap *myMap = (hashmap*)MIO_IDGet (pmMapID, HASHMAP_ID);

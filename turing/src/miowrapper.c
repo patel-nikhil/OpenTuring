@@ -885,6 +885,16 @@ void MIO_hashmap_putreal(OOTaddr *sp)
 	MIOHashmap_PutReal(hashId, key, val);
 }
 
+void MIO_hashmap_putstring(OOTaddr *sp)
+{
+	OOTint hashId;
+	OOTstring key;
+	OOTstring val;
+
+	MyExecutorScan(sp, "IRR", &hashId, &key, &val);
+	MIOHashmap_PutString(hashId, key, val);
+}
+
 void MIO_hashmap_get (OOTaddr *sp)
 {
     OOTint hashId;
@@ -905,6 +915,18 @@ void MIO_hashmap_getreal(OOTaddr *sp)
 	MyExecutorScan(sp, "rIR8", &hashId, &key, &result);
 
 	RESULT_OOT_INT(sp, MIOHashmap_GetReal(hashId, key, result));
+}
+
+void MIO_hashmap_getstring(OOTaddr *sp)
+{
+	OOTint hashId;
+	OOTstring key;
+	char** result;
+
+	MyExecutorScan(sp, "rIRR", &hashId, &key, &result);
+	int x = MIOHashmap_GetString(hashId, key, result);
+
+	strcpy_s(*sp, strlen((char*)*result)+1, (char*)*result);
 }
 
 void MIO_hashmap_remove (OOTaddr *sp)
