@@ -921,11 +921,13 @@ void MIO_hashmap_getstring(OOTaddr *sp)
 {
 	OOTint hashId;
 	OOTstring key;
-	char** result;
+	char** result = (char**)malloc(256);
 
-	MyExecutorScan(sp, "rIRR", &hashId, &key, &result);
+	//MyExecutorScan(sp, "rIRR", &hashId, &key, &result);
+	MyExecutorScan(sp, "rIR", &hashId, &key);
 	int x = MIOHashmap_GetString(hashId, key, result);	
 	strcpy_s(*sp, strlen((char*)*result) + 1, (char*)*result);
+	free(result);
 }
 
 void MIO_hashmap_remove (OOTaddr *sp)
