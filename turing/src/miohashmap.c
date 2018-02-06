@@ -188,7 +188,7 @@ extern OOTint	MIOHashmap_GetString(OOTint pmMapID, OOTstring key, char **result)
 	retrieved = hashmapGet(myMap, key);
 	
 	if (retrieved == NULL) {
-		result = 0;
+		*result = "\0";
 		return 0; // 0 if not found
 	}
 	else {		

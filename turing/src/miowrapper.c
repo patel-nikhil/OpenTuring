@@ -925,8 +925,8 @@ void MIO_hashmap_getstring(OOTaddr *sp)
 
 	//MyExecutorScan(sp, "rIRR", &hashId, &key, &result);
 	MyExecutorScan(sp, "rIR", &hashId, &key);
-	int x = MIOHashmap_GetString(hashId, key, result);	
-	strcpy_s(*sp, strlen((char*)*result) + 1, (char*)*result);
+	int x = MIOHashmap_GetString(hashId, key, result);
+	strcpy_s(*sp, strlen((char*)*result) + sizeof("\0"), (char*)*result);
 	free(result);
 }
 
